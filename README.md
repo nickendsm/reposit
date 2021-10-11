@@ -1,2 +1,2 @@
 # reposit
-homework
+Variant #1
