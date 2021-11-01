@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
-project(task1)
+project(matmod21)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(task1 hw1.cpp)
+add_subdirectory(homework1)
