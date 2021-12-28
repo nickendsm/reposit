@@ -30,10 +30,10 @@ int main() {
             if (nm > 1) {
                 b = {stod(line.substr(0, line.find(' '))), stod(line.substr(line.find(' ') + 1))};
                 // посчитали расстояние
-                if (a.y * b.x > a.x * b.y) {
+                if (a.y * b.x < a.x * b.y) {
                     left.push_back(b);
                 }
-                if (a.y * b.x < a.x * b.y) {
+                if (a.y * b.x > a.x * b.y) {
                     right.push_back(b);
                 }
                 if (a.y * b.x == a.x * b.y) {
