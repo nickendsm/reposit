@@ -70,7 +70,7 @@ int main() {
             Vect Leftmost = left[lind];
             cout << "Leftmost: " << Leftmost.x << " ";
             cout << Leftmost.y << endl;
-        } else { cout << "Leftmost: 0 0 " << endl;}
+        } else { cout << "Leftmost: 0 0" << endl;}
         if (sizeof(rightC) != 0) {
             float max = rightC[0];
             for (int i = 1; i <= right.size() - 1; i++) {
