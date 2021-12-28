@@ -18,7 +18,6 @@ int main(int argc, char** argv)
         double vx;
         double vy;
         // считываем построчно, k - счетчик номера строки
-         cout << "Xk: " << xk.size() <<endl;
         while (getline(file, line)) {
             k++;
             if (k == 1) { h0 = stod(line); }
