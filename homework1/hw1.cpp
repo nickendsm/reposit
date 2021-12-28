@@ -25,7 +25,6 @@ int main() {
             if (nm == 1) {
                 a = {stod(line.substr(0, line.find(' '))), stod(line.substr(line.find(' ') + 1))};
             }
-            b = {1,1};
             // идем по следующим векторам
             if (nm > 1) {
                 b = {stod(line.substr(0, line.find(' '))), stod(line.substr(line.find(' ') + 1))};
