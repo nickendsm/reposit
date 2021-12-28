@@ -37,7 +37,7 @@ int main() {
                     right.push_back(b);
                 }
                 if (a.y * b.x == a.x * b.y) {
-                    left.push_back(b);
+                    right.push_back(b);
                 }
             }
 
@@ -71,7 +71,7 @@ int main() {
             Vect Leftmost = left[lind];
             cout << "Leftmost: " << Leftmost.x << " ";
             cout << Leftmost.y << endl;
-        } else { cout << "Leftmost: -";}
+        } else { cout << "Leftmost: 0 0 ";}
         if (sizeof(rightC) != 0) {
             int max = rightC[0];
             for (int i = 1; i <= right.size() - 1; i++) {
@@ -83,7 +83,7 @@ int main() {
             Vect Rightmost = right[rind];
             cout << "Rightmost: " << Rightmost.x << " ";
             cout << Rightmost.y << endl;
-        } else { cout << "Rightmost" << ": "<< "-";}
+        } else { cout << "Rightmost" << ": "<< "0 0";}
     }
     myfile.close();     // закрываем файл
     return 0;
