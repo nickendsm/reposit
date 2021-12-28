@@ -26,7 +26,6 @@ int main(int argc, char** argv)
                 vy = stod(line.substr(line.find(' ') + 1));
             } else {
                 if ((k != 1) && (line.length() > 0)) {
-                    cout << "K: " << k << endl;
                     xk.push_back(stod(line.substr(0, line.find(' '))));
                     hk.push_back(stod(line.substr(line.find(' ') + 1)));
                 }
