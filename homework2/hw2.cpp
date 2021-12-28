@@ -18,6 +18,7 @@ int main(int argc, char** argv)
         double vx;
         double vy;
         // считываем построчно, k - счетчик номера строки
+         cout << "Xk: " << xk.size() <<endl;
         while (getline(file, line)) {
             k++;
             if (k == 1) { h0 = stod(line); }
@@ -25,17 +26,20 @@ int main(int argc, char** argv)
                 vx = stod(line.substr(0, line.find(' ')));
                 vy = stod(line.substr(line.find(' ') + 1));
             } else {
-                if (k != 1) {
+                if ((k != 1) && (line != "")) {
+                    cout << "K: " << k << endl;
                     xk.push_back(stod(line.substr(0, line.find(' '))));
                     hk.push_back(stod(line.substr(line.find(' ') + 1)));
                 }
             }
         }
+        // надо проверить, может перегородок нет, и поэтому сразу вывести нулевую зону
+        int answer = 0; // нулевая зона
+        if (xk.size() == 0) {cout << answer; return 0;}
         double g = 9.81;
         double h = h0;
         int i = -1;
         double t;
-        int answer = 0; // нулевая зона
         int i_prev;
         // смотрим в зоне каждой перегородки высоту нашего летящего тела
         while (h > 0) {
@@ -82,6 +86,7 @@ int main(int argc, char** argv)
     }
     return 0;
 }
+
 
 
 
