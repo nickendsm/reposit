@@ -44,17 +44,17 @@ int main() {
         // теперь найдем макс слева и справа от прямой
         float leftC[left.size()];
         float rightC[right.size()];
-        float modul = sqrt(a.y * a.y + a.x * a.x);
+        float constanta = sqrt(a.y * a.y + a.x * a.x);
         if (left.size() >= 1) {
             for (int i = 0; i <= left.size() - 1; i++) {
                 b = left[i];
-                leftC[i] = fabs(a.y * b.x - a.x * b.y) / modul;
+                leftC[i] = fabs(a.y * b.x - a.x * b.y) / constanta;
             }
         }
         if (right.size() >=1) {
             for (int i = 0; i <= right.size() - 1; i++) {
                 b = right[i];
-                rightC[i] = fabs(a.y * b.x - a.x * b.y) / modul;
+                rightC[i] = fabs(a.y * b.x - a.x * b.y) / constanta;
             }
         }
         int lind = 0;
