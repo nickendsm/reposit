@@ -59,7 +59,7 @@ int main() {
         }
         int lind = 0;
         int rind = 0;
-        if (sizeof(leftC) != 0){
+        if (left.size() != 0){
             float max = leftC[0];
             for (int i = 1; i<=left.size()-1; i++) {
                 if (leftC[i] >= max) {
@@ -71,7 +71,7 @@ int main() {
             cout << "Leftmost: " << Leftmost.x << " ";
             cout << Leftmost.y << endl;
         } else { cout << "Leftmost: 0 0" << endl;}
-        if (sizeof(rightC) != 0) {
+        if (right.size() != 0) {
             float max = rightC[0];
             for (int i = 1; i <= right.size() - 1; i++) {
                 if (rightC[i] >= max) {
