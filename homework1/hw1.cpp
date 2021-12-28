@@ -83,7 +83,7 @@ int main() {
             Vect Rightmost = right[rind];
             cout << "Rightmost: " << Rightmost.x << " ";
             cout << Rightmost.y << endl;
-        } else { cout << "Rightmost" << ": "<< "0 0";}
+        } else { cout << "Rightmost: 0 0" <<endl;}
     }
     myfile.close();     // закрываем файл
     return 0;
