@@ -42,8 +42,8 @@ int main() {
 
         }
         // теперь найдем макс слева и справа от прямой
-        float leftC[left.size()];
-        float rightC[right.size()];
+        float *leftC = new float[left.size()];
+        float *rightC = new float[right.size()];
         float constanta = sqrt(a.y * a.y + a.x * a.x);
         if (left.size() >= 1) {
             for (int i = 0; i <= left.size() - 1; i++) {
@@ -72,7 +72,7 @@ int main() {
             cout << Leftmost.y << endl;
         } else { cout << "Leftmost: 0 0" << endl;}
         if (sizeof(rightC) != 0) {
-            float max = rightC[0];
+            int max = rightC[0];
             for (int i = 1; i <= right.size() - 1; i++) {
                 if (rightC[i] >= max) {
                     max = rightC[i];
