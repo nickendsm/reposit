@@ -78,7 +78,7 @@ int main(int argc, char** argv)
             }
             else { vx = -vx; }
         }
-        cout << "Answer" << answer;
+        cout << answer;
     }
     return 0;
 }
