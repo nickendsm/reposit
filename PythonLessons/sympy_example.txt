@@ -1,0 +1,11 @@
+from sympy import *
+import math
+var('x')
+Y = Function('Y')(x)
+diff(Y)
+Y = x**2 + exp(x**3)
+spisok = []
+spisok.append(diff(Y))
+spisok
+result = diff(Y).subs(x,5)
+result
