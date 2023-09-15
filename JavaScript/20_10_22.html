@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Hook's chain </title>
+		<script src = '20_10_22.js'>
+		</script>
+	</head>
+	<body>
+	<canvas id = 'cnv' width = 1000 height = 250 style='border: 1px solid black;'></canvas>
+	<div id = 'exp1'  style = 'display:none' width = 50 align = 'left'>
+	<b><i>Эксперимент 1</i>: чередующиеся частицы разной массы.
+	<br>Задать массу одних частиц: <input type = 'number' id = 'exp1_1' min = 1 max = 1000 value = 1 step = 1>
+	<br>Задать массу других: <input type = 'number' width = 15 id = 'exp1_2' min = 1 max = 1000 value = 3 step = 1>
+	</div>
+	
+	<div id = 'exp2' style = 'display:none' width = 50 align = 'left'>
+	<b><i>Эксперимент 2</i>: постепенное увеличение масс.
+	</div>
+	
+	<style type="text/css">
+	#exp1 {position: absolute; top: 125px; left:1020px;}
+	#exp1_1 {width: 30px;}
+	#exp1_2 {width: 30px;}
+	#exp2 {position: absolute; top: 125px; left:1020px;}
+	#moderadio {position: absolute; top: 125px; left:1020px;}
+	#varyM,#Bess {position: absolute; top: 190px; left:1020px;}
+	#Bess {display:none;}
+	hr {
+		display: block;
+		height: 1px;
+		border: 0;
+		border-top: 1px solid #ccc;
+		margin: 1em 0;
+		padding: 0;
+	}
+	#HOP { width: 30px;}
+	</style>
+	
+	<canvas id = 'mass_cnv' width = 1000 height = 30 style = 'border: 1px solid black;'></canvas>
+	
+	<!-- <br> <input type = 'button' id = 'bring' value = 'Посчитать'> -->
+	<!-- <div id = 'moderadio'> -->
+		<!-- Вид цепочки: -->
+		<!-- <br><b><label><input type = 'radio' name = 'masstype' id = 'OneM' value = 'Режим одинаковых масс'>Одинаковые массы</label> -->
+		<!-- <br><b><label><input type = 'radio' name = 'masstype' id = 'ManyM' value = 'Различные массы' checked>Различные массы</label> -->
+	<!-- </div> -->
+	<!-- <div id = 'Bess'> -->
+		<!-- <label><input type = 'checkbox' id = 'ifBess' value = 'Решение Шредингера'><font color = 'blue'>Решение Шрёдингера</font></label> -->
+	<!-- </div> -->
+	<div id = 'varyM'>
+		<br><label><b>Режим работы программы:</b><br><input type = 'radio' id = 'masses' name='mode' value='массы'> Задание масс частиц
+		<br><input type = 'radio' name = 'mode' id = 'model' value = 'моделир' checked> Режим моделирования
+	</div>
+	<div id = 'text_slide' style = 'display:none'>
+		<br><b> Проведите вдоль частиц по холсту для выбора</b></br>
+		<br><input style ='display:none' type = 'button' id = 'mass' value = 'Присвоить массу (усл. ед.)'>
+		<input style = 'display:none' type = 'number' id = 'mass_value' value = 3 min = -10 max = 10 step = 1>
+		Или выберите один из предложенных вариантов распределения масс:
+		<input type = 'number' id = 'mass_ex' size = '1' min = '1' max = '2' value = '0' step = '1'></br>
+	</div>
+	<div id ='main_block' style = 'display:inline'>
+	<canvas id = 'gcnv' width = 1000 height = 250 style = 'border: 1px solid black;'></canvas>
+	<!-- <canvas id = 'g2cnv' width = 1000 height = 250 style = 'border: 1px solid black;'></canvas> -->
+	<!-- <canvas id = 'g3cnv' width = 1000 height = 250 style = 'border: 1px solid black;'></canvas> -->
+	<br><br><b>Количество частиц: <input type="number" id = "Quantity" min=15 max=5000 value=150 style="width: 50px"> 
+	<div id = 'for_wave' style = 'display:inline'>
+	Номер частицы для которой задаем начальную скорость: <input type = "number" id = "first" min = 15 max = 1000 value = 15 style="width: 50px">
+	Начальная скорость: <input type="number" id = "v" min=-100 max=200 value=100 step = 5 style="width: 50px">	
+	</div>
+	<div id = 'wave' style = 'display:none'>
+	Номер частицы, с которой начинается волна: <input type = "number" id = "first2" value = 30 style = "width: 50px">
+	Длина волны (в частицах): <input type = "number" id = "howmany" min = 2 max = 1000 value = 2 style = "width: 50px">
+	Размер области (в количестве волн): <input type = "number" id = "area" min = 2 max = 1000 value = 3 style = "width: 50px">
+	</div>
+	<br><label><b>Масштаб по Oy:</b><input type = 'range' id = 'yscale' min = 0.1 step = 0.1 value = 1 max = 30 ></input></label>
+	<input type = "button" id = "New" value = "Обновить н.у (массы равны 1)"/>
+	<input type="button" id = "Model" value = "Начать"/> <input type="button" id = "Pause" value = "▶/||"/><b> Выберите номер эксперимента:</b>
+	<input type='number' size='1' id = 'num' min='1' max='7' value='0' step='1'>
+	<i><span id = 'exper'></span></i></br>
+	<hr/>
+	<label><b>Скорость моделирования (меняет шаг интегрирования):</b><input type = 'range' id = 'speed' min = -5 step = 0.2 value = 0.1 max = 10 ></input></label><span id = 'spd'></span> 
+	<br><label><b>Количество кадров в секунду (fps):</b><input type = 'range' id = 'fps_range' min = 20 step = 10 value = 120 max = 120 ></input></label><span id = 'howof'></span>
+	<br><label><b> Рисовать каждый <input type = 'text' id = 'HOP' value = '1'> шаг </b></label>
+	</div>
+	</body>
+</html>
